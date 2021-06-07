@@ -1,6 +1,6 @@
 # Python Django Starter
 
-A starter project for building a web backend with [Django](https://docs.djangoproject.com/en/3.2/intro/tutorial01/) in Python.
+A starter project for building a web site with [Django](https://docs.djangoproject.com/en/3.2/intro/tutorial01/) in Python.
 
 ## Getting started
 
