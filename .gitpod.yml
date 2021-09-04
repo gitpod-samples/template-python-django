@@ -14,4 +14,3 @@ ports:
 vscode:
   extensions:
     - ms-python.python
-    - tabnine.tabnine-vscode
