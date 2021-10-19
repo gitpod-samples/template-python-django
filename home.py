@@ -7,7 +7,7 @@ def app():
         This form will only works if you are already logged into https://escrow.com
         Then, you can use your password or you API Key for making transactions and trade
         cryptocurrencies or whatever you want to trade! This app is consuming the escrow.com API.
-        '''
+        ''')
     
     with st.form('Fill this form to make a transaction!'):
         field1, field2 = st.columns((2,2))
