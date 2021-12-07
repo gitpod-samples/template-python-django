@@ -1,9 +1,10 @@
-from django.conf.urls import url, include
-from rest_framework.urlpatterns import format_suffix_patterns
-from .views import CreateView
+from django.urls import include, path 
+from rest_framework import routers
+from . import views
 
-urlpatterns = {
-    url(r'^StringCalculator/$', CreateView.as_view(), name="create"),
-}
+router = routers.DefaultRouter()
+router.register(r'stringCalc', views.StringCalcViewSet)
 
-urlpatterns = format_suffix_patterns(urlpatterns)
+urlpatterns = [
+    path('', include(router.urls)),
+]

@@ -5,12 +5,17 @@ from .models import StringCalculator
 
 # Create your views here.
 
+class StringCalcViewSet(viewsets.ModelViewSet):
+    queryset = StringCalculator.objects.all()
+    serializer_class = StringCalculatorSerializer
+
 class CreateView(generics.ListCreateAPIView):
     queryset = StringCalculator.objects.all()
     serializer_class = StringCalculatorSerializer
 
     def perform_create(self, serializer):
-        serializer.save(strRes = add(serializer.validated_data['strReq']))
+        serializer.save()
+        #serializer.save(strRes = add(serializer.validated_data['strReq']))
 
     def add(self, strParam): 
         p1 , p2 = strParam.split()
