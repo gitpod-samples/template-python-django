@@ -1,7 +1,7 @@
 from rest_framework import serializers 
 from .models import StringCalculator
 
-class StringCalculatorSerializer(serializers.ModelSerializer):
+class StringCalculatorSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta: 
         model = StringCalculator
