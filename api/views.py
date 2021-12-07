@@ -21,12 +21,12 @@ class StringCalcView(APIView):
     def post(self, request, format = None):
         serializer = StringCalculatorSerializer(data = request.data)
         if serializer.is_valid():
-            serializer.save(strRes = add(serializer.validated_data['strReq']))
+            serializer.save(strRes = self.add(serializer.validated_data['strReq']))
             return Response(serializer.data, status= status.HTTP_201_CREATED)
         return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
     def add(self, strParam): 
-        p1 , p2 = strParam.split()
+        p1 , p2 = strParam.split(",")
         result = int(p1) + int(p2) 
         return result
 
