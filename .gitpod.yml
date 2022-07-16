@@ -10,12 +10,23 @@ tasks:
     command: |
       source venv/bin/activate
       python manage.py runserver
-  
+  - name: Coverage report
+    init: | 
+      coverage run manage.py test 
+      coverage html
+      python -m http.server 8888
+
+
 ports:
   - port: 8000
     visibility: private
     onOpen: open-preview
-
+  - port: 8888
+    visibility: private
+    onOpen: open-preview
+    
 vscode:
   extensions:
     - ms-python.python
+    - littlefoxteam.vscode-python-test-adapter
+
