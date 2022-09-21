@@ -18,7 +18,7 @@ vscode:
   extensions:
     - ms-python.python
 
-coredump:
+coreDump:
   enabled: true
-  soft-limit: 10000000
-  hard-limit: 20000000
+  softLimit: 10000000
+  hardLimit: 20000000
