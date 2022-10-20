@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-!cd0v*xol@f6k=q5k1i=**i(15bpm3dka8ipdd45mk+p7it!th
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ['https://8000-gitpodio-templatepython-qaec2yzasei.ws-us72.gitpod.io']
 
 
 # Application definition
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'demo',
 ]
 
 MIDDLEWARE = [
