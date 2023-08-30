@@ -1,17 +1,46 @@
+# Image source code: https://github.com/axonasif/workspace-images/tree/tmp
+# Also see: https://github.com/gitpod-io/workspace-images/issues/1071
+image: axonasif/workspace-python@sha256:f5ba627a31505ea6cf100abe8e552d7ff9e0abd6ba46745b6d6dab349c001430
+
 tasks:
-  - init: |
-      python -m venv venv
-      source venv/bin/activate
+  - name: Init project and run server
+    init: |
+      # Install Django and upgrade some dependencies
       pip install --upgrade pip wheel setuptools
       pip install Django
+      
+      # Init Django project
+      name="mysite"
+      if test ! -e "${name}"; then {
+        django-admin startproject "${name}" .
+      } fi
+
+      # Modify settings.py to include Gitpod port hosts
+      settings="${name}/settings.py"
+      if test -e "${settings}" && ! grep -q 'GITPOD_WORKSPACE_URL' "${settings}" 2>/dev/null; then {
+        cat >> "${settings}" << 'SCRIPT'
+
+      if __import__('os').environ.get('GITPOD_WORKSPACE_URL'):
+          try:
+              gp = __import__('subprocess').run(["gp", "url", "8000"], capture_output=True, text=True)
+              if gp.returncode == 0 and gp.stdout:
+                  ALLOWED_HOSTS += [gp.stdout.strip().split('//', 1)[-1]]
+          except:
+              ALLOWED_HOSTS += ['*']
+      
+      SCRIPT
+      } fi
+
+      if test -e requirements.txt; then {
+        pip install -r requirements.txt
+      } fi
+
       python manage.py migrate
-  - command: |
-      source venv/bin/activate
+    command: |
       python manage.py runserver
   
 ports:
   - port: 8000
-    visibility: private
     onOpen: open-preview
 
 vscode:
