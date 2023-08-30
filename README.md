@@ -1,6 +1,6 @@
 # A Python Django template on Gitpod
 
-This is a [Python Django](https://www.djangoproject.com) template configured for ephemeral cloud development environments on [Gitpod](https://www.gitpod.io/).
+This is a [Python Django](https://www.djangoproject.com) template generator configured for ephemeral cloud development environments on [Gitpod](https://www.gitpod.io/).
 
 ## Next Steps
 
@@ -16,4 +16,4 @@ Click the above "Open in Gitpod" button to start a new workspace. Once you're re
 
 ### An existing project
 
-To get started with Python Django on Gitpod, add a [`.gitpod.yml`](./.gitpod.yml) file which contains the configuration to improve the developer experience on Gitpod. To learn more, please see the [Getting Started](https://www.gitpod.io/docs/getting-started) documentation.
+Copy and commit the [`.gitpod.yml`](./.gitpod.yml) to your existing project to have the same configuration of this template. To learn more, please see the [Getting Started](https://www.gitpod.io/docs/getting-started) documentation.
